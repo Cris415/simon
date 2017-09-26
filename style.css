@@ -1,3 +1,51 @@
-button {
-    /* background-color: yellow; */
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gameBtns{
+    width: 20vw;
+    height: 20vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: stretch;
+}
+
+.gameBtns button {
+height: 40%;
+width: 40%;
+
+}
+
+.gameBtns #r{
+background-color: red;
+border-radius: 0 100px 0 0;
+grid-column: 2 / 3;
+grid-row: 1 / 2;
+align-self: end;
+}
+.gameBtns #b{
+background-color: blue;
+border-radius: 0 0 100px 0;
+grid-column: 2 / 3;
+grid-row: 2 / 3;
+
+}
+.gameBtns #y{
+background-color: yellow;
+border-radius: 0 0 0 100px;
+grid-column: 1 / 2;
+grid-row: 2 / 3;
+
+justify-self: end;
+}
+.gameBtns #g{
+background-color: green;
+border-radius: 100px 0 0 0;
+grid-column: 1 / 2;
+grid-row: 1 / 2;
+justify-self: end;
+align-self: end;
 }
