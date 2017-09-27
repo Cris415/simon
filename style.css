@@ -1,51 +1,84 @@
-
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.gameBtns{
-    width: 20vw;
-    height: 20vw;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-items: stretch;
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
-.gameBtns button {
-height: 40%;
-width: 40%;
-
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6d6027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d3cbb8,
+    #6d6027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d3cbb8,
+    #6d6027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.gameBtns #r{
-background-color: red;
-border-radius: 0 100px 0 0;
-grid-column: 2 / 3;
-grid-row: 1 / 2;
-align-self: end;
+.container {
+  /* margin-top: 50px; */
+  position: relative;
 }
-.gameBtns #b{
-background-color: blue;
-border-radius: 0 0 100px 0;
-grid-column: 2 / 3;
-grid-row: 2 / 3;
+.gameBtns {
+  position: relative;
+  z-index: 8;
+  margin: 0;
+  padding: 0;
+  /* width: 20vw;
+    height: 20vw; */
+  /* display:flex; */
+}
 
+.gameBtns div button {
+  height: 300px;
+  width: 300px;
+  border: 5px solid #414142;
+  text-decoration: none;
 }
-.gameBtns #y{
-background-color: yellow;
-border-radius: 0 0 0 100px;
-grid-column: 1 / 2;
-grid-row: 2 / 3;
+.gameBtns #r {
+  background-color: #ff4341;
+  border-radius: 0 290px 0 0;
+  border-top: 10px solid #414142;
+  border-right: 10px solid #414142;
+}
+.gameBtns #b {
+  background-color: #434ae8;
+  border-radius: 0 0 290px 0;
+  border-right: 10px solid #414142;
+  border-bottom: 10px solid #414142;
+}
+.gameBtns #y {
+  background-color: #e8ca41;
+  border-radius: 0 0 0 290px;
+  border-bottom: 10px solid #414142;
+  border-left: 10px solid #414142;
+  float: left;
+}
+.gameBtns #g {
+  background-color: #27ff74;
+  border-radius: 290px 0 0 0;
+  border-top: 10px solid #414142;
+  border-left: 10px solid #414142;
+  float: left;
+}
 
-justify-self: end;
-}
-.gameBtns #g{
-background-color: green;
-border-radius: 100px 0 0 0;
-grid-column: 1 / 2;
-grid-row: 1 / 2;
-justify-self: end;
-align-self: end;
+.cntrl-pnl {
+  position: absolute;
+  left: 140px;
+  top: 140px;
+  height: 300px;
+  width: 300px;
+  border-radius: 100%;
+  background-color: white;
+  border: 10px solid #414142;
+  z-index: 10;
 }
