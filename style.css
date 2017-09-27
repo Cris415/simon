@@ -71,6 +71,11 @@ body {
   float: left;
 }
 
+.btnOn {
+  transition: opacity 0.5s;
+  opacity: 0.5;
+}
+
 .cntrl-pnl {
   position: absolute;
   left: 140px;
