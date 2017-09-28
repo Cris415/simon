@@ -44,46 +44,104 @@ body {
   border: 5px solid #414142;
   text-decoration: none;
 }
+.gameBtns div button:active {
+  /* transition: opacity 0.5s; */
+  /* opacity: 0.2; */
+  /* box-shadow: 0 4px #666;
+  transform: translateY(0.5px); */
+}
+
 .gameBtns #r {
-  background-color: #ff4341;
+  background-color: #af0000;
+
   border-radius: 0 290px 0 0;
   border-top: 10px solid #414142;
   border-right: 10px solid #414142;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px;
+}
+
+.gameBtns #r:active {
+  transition: background-color 0.1s;
+  background-color: #f00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 50px;
 }
 .gameBtns #b {
-  background-color: #434ae8;
+  background-color: #2198a8;
   border-radius: 0 0 290px 0;
   border-right: 10px solid #414142;
   border-bottom: 10px solid #414142;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px;
+}
+
+.gameBtns #b:active {
+  transition: background-color 0.1s;
+  background-color: #24e0ff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 50px;
 }
 .gameBtns #y {
-  background-color: #e8ca41;
+  background-color: #d3d300;
   border-radius: 0 0 0 290px;
   border-bottom: 10px solid #414142;
   border-left: 10px solid #414142;
   float: left;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px;
+}
+.gameBtns #y:active {
+  transition: background-color 0.1s;
+  background-color: #ff0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 50px;
 }
 .gameBtns #g {
-  background-color: #27ff74;
+  background-color: #77ad02;
   border-radius: 290px 0 0 0;
   border-top: 10px solid #414142;
   border-left: 10px solid #414142;
   float: left;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px;
 }
-
+.gameBtns #g:active {
+  transition: background-color 0.1s;
+  background-color: #abff00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 50px;
+}
 .btnOn {
   transition: opacity 0.5s;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .cntrl-pnl {
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  display: inline-block;
+  box-sizing: border-box;
+  max-height: 300px;
+  max-width: 300px;
+  min-height: 300px;
+  min-width: 300px;
   position: absolute;
-  left: 140px;
-  top: 140px;
-  height: 300px;
-  width: 300px;
+  padding: 50px;
+  left: 150px;
+  top: 150px;
+
   border-radius: 100%;
   background-color: white;
   border: 10px solid #414142;
   z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 0 9px 4px, inset #000000 0 -1px 9px;
+  /* margin: 0 auto; */
+}
+
+.cntrl-pnl button {
+  margin: auto;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+}
+
+.cntrl-pnl div {
+  margin: auto;
+  border: 2px solid black;
+  height: 50px;
+  width: 50px;
 }

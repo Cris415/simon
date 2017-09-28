@@ -7,7 +7,7 @@ var userSequence = [];
 function tileClick(event) {
   var clickedBtn = event.target.id;
   userSequence.push(clickedBtn);
-  toggleBtn(clickedBtn);
+  //toggleBtn(clickedBtn);
   console.log(userSequence, "user");
   //Check if sequences do not match, show the last sequence again
   if (!compareArrays(userSequence, sequence, false)) {
@@ -38,11 +38,11 @@ function compareArrays(arr1, arr2, fllChk) {
 }
 
 //Lights up chosen button
-function toggleBtn(button) {
-  //untoggle .5sec later
-  document.getElementById(button).classList.toggle("btnOn");
-  //setTimeout(document.getElementById(button).classList.toggle("btnOn"), 0.3);
-}
+// function toggleBtn(button) {
+//   //untoggle .5sec later
+//   document.getElementById(button).classList.toggle("btnOn");
+//   //setTimeout(document.getElementById(button).classList.toggle("btnOn"), 0.3);
+// }
 
 //Random number fn from MDN
 function getRandomInt(min, max) {
