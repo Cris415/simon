@@ -1,8 +1,9 @@
 const gameBtns = document.getElementById("gameBtns");
+const display = document.getElementById("display");
 const buttons = ["g", "r", "y", "b"];
 var sequence = [];
 var userSequence = [];
-var count = 0;
+var count = 1;
 var simonOnOff = false;
 var simonStrict = false;
 
@@ -24,7 +25,9 @@ function tileClick(event) {
       playSequence();
       return console.log(sequence);
     } else {
+      //If strict game will restart
       //Add display msg "lose or X"
+      display.innerHTML = "X";
       //reset game
       restart();
     }
@@ -33,6 +36,8 @@ function tileClick(event) {
   if (compareArrays(userSequence, sequence, true)) {
     userSequence = [];
     addToSequence();
+    count = sequence.length;
+    display.innerHTML = count;
     playSequence();
   }
 }
@@ -69,6 +74,7 @@ function addToSequence() {
 
 //Start the game
 function init() {
+  display.innerHTML = count;
   gameBtns.disabled = false;
   gameBtns.addEventListener("click", tileClick);
   simonOnOff = true;
@@ -91,7 +97,7 @@ function restart(shut) {
   if (simonOnOff) {
     sequence = [];
     userSequence = [];
-    count = 0;
+    count = 1;
     if (shut) {
       console.log("called init");
       init();
