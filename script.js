@@ -6,6 +6,7 @@ var userSequence = [];
 var count = 1;
 var simonOnOff = false;
 var simonStrict = false;
+const vicSteps = 20;
 
 function tileClick(event) {
   var clickedBtn = event.target.id;
@@ -29,16 +30,27 @@ function tileClick(event) {
       //Add display msg "lose or X"
       display.innerHTML = "X";
       //reset game
-      restart();
+      setTimeout(function() {
+        restart(true);
+      }, 1000);
     }
   }
 
   if (compareArrays(userSequence, sequence, true)) {
-    userSequence = [];
-    addToSequence();
-    count = sequence.length;
-    display.innerHTML = count;
-    playSequence();
+    if (sequence.length === vicSteps) {
+      //Add display msg "win or W "
+      display.innerHTML = "W";
+      //reset game
+      setTimeout(function() {
+        restart(true);
+      }, 1000);
+    } else {
+      userSequence = [];
+      addToSequence();
+      count = sequence.length;
+      display.innerHTML = count;
+      playSequence();
+    }
   }
 }
 
@@ -74,7 +86,6 @@ function addToSequence() {
 
 //Start the game
 function init() {
-  display.innerHTML = count;
   gameBtns.disabled = false;
   gameBtns.addEventListener("click", tileClick);
   simonOnOff = true;
@@ -84,6 +95,7 @@ function init() {
 }
 function shutOff() {
   simonOnOff = false;
+  display.innerHTML = "";
   restart(false);
   //Remove "light on" class, so the device stops blinking when off
   // for (let i = 0; i < buttons.length; i++) {
@@ -98,8 +110,8 @@ function restart(shut) {
     sequence = [];
     userSequence = [];
     count = 1;
+    display.innerHTML = count;
     if (shut) {
-      console.log("called init");
       init();
     }
   }
