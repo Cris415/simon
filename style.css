@@ -187,11 +187,18 @@ body {
 }
 
 .cntrl-pnl .display {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
+
+  font-size: 2rem;
+  font-family: "Iceberg", cursive;
+  color: #ff5151;
+  background-color: rgb(138, 29, 29);
+
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px 4px, inset #441313 0 -1px 15px;
   border: 2px solid black;
   height: 50px;
   width: 50px;
-  text-align: center;
-  background-color: rgb(255, 142, 142);
 }
