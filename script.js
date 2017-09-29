@@ -4,17 +4,30 @@ var sequence = [];
 var userSequence = [];
 var count = 0;
 var simonOnOff = false;
+var simonStrict = false;
 
 function tileClick(event) {
   var clickedBtn = event.target.id;
+  //If user presses outside of the buttons but within the click event area just outside of the curved edges
+  if (clickedBtn.length === 0) {
+    return;
+  }
+  //Add the button to sequence
   userSequence.push(clickedBtn);
-  //toggleBtn(clickedBtn);
+
   console.log(userSequence, "user");
+
   //Check if sequences do not match, show the last sequence again
   if (!compareArrays(userSequence, sequence, false)) {
-    userSequence = [];
-    playSequence();
-    return console.log(sequence);
+    if (!simonStrict) {
+      userSequence = [];
+      playSequence();
+      return console.log(sequence);
+    } else {
+      //Add display msg "lose or X"
+      //reset game
+      restart();
+    }
   }
 
   if (compareArrays(userSequence, sequence, true)) {
@@ -86,6 +99,19 @@ function restart(shut) {
   }
 }
 
+document.getElementById("strict").addEventListener("click", simonStrictFn);
+function simonStrictFn() {
+  if (simonOnOff) {
+    if (simonStrict) {
+      document.getElementById("strict").classList.toggle("strictOn");
+      simonStrict = false;
+    } else {
+      document.getElementById("strict").classList.toggle("strictOn");
+      simonStrict = true;
+    }
+  }
+}
+
 document.getElementById("onOff").addEventListener("click", onOff);
 function onOff() {
   if (simonOnOff) {
@@ -101,6 +127,7 @@ function onOff() {
 
 document.getElementById("restart").addEventListener("click", restart);
 
+//Lights up buttons based on sequence array
 function playSequence() {
   for (let i = 0; i < sequence.length; i++) {
     setTimeout(function() {
@@ -110,16 +137,10 @@ function playSequence() {
   setTimeout(function() {}, 2000 * sequence.length);
 }
 
+//Lights up the chosen button
 function lightButton(id) {
   document.getElementById(id).classList.toggle(id + "On");
   setTimeout(function() {
     document.getElementById(id).classList.toggle(id + "On");
   }, 1000);
 }
-// var array1 = [1, 2, 5, 7];
-// var array2 = [1, 2, 5, 7];
-// var array3 = [1, 2, 5, 7, 8];
-// var array4 = [1, 2, 4, 7];
-// console.log(compareArrays(array1, array2), " should be true");
-// console.log(compareArrays(array1, array3), " should be false");
-// console.log(compareArrays(array1, array4), " should be false");

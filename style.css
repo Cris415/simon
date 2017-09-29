@@ -33,6 +33,7 @@ body {
   z-index: 8;
   margin: 0;
   padding: 0;
+
   /* width: 20vw;
     height: 20vw; */
   /* display:flex; */
@@ -184,6 +185,10 @@ body {
 .cntrl-pnl .onButton {
   transition: fill 350ms;
   fill: white;
+}
+.strictOn {
+  transition: color 350ms;
+  color: white;
 }
 
 .cntrl-pnl .display {
