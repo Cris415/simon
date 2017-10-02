@@ -53,12 +53,12 @@ body {
 } */
 
 .container .gameBtns .rOn {
-  transition: background-color 0.3s;
+  transition: background-color 0.1s;
   background-color: #f00;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 50px;
 }
 .container .gameBtns .bOn {
-  transition: background-color 0.3s;
+  transition: background-color 0.1s;
   background-color: #24e0ff;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 50px;
 }

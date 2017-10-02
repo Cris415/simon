@@ -8,8 +8,29 @@ var simonOnOff = false;
 var simonStrict = false;
 const vicSteps = 20;
 
+//True will pause, false will play.
+function playAudio(btn, bool) {
+  const audioLib = {
+    r: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    g: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    b: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    y: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
+  };
+  bool = bool || false;
+
+  if (!bool) {
+    audioLib[btn].play();
+  } else {
+    audioLib[btn].pause();
+  }
+}
+function pauseFn(event) {
+  var clickedBtn = event.target.id;
+  playAudio(clickedBtn, true);
+}
 function tileClick(event) {
   var clickedBtn = event.target.id;
+  playAudio(clickedBtn);
   //If user presses outside of the buttons but within the click event area just outside of the curved edges
   if (clickedBtn.length === 0) {
     return;
@@ -49,7 +70,9 @@ function tileClick(event) {
       addToSequence();
       count = sequence.length;
       display.innerHTML = count;
-      playSequence();
+      setTimeout(function() {
+        playSequence();
+      }, 1500);
     }
   }
 }
@@ -87,7 +110,10 @@ function addToSequence() {
 //Start the game
 function init() {
   gameBtns.disabled = false;
-  gameBtns.addEventListener("click", tileClick);
+  document.getElementById("restart").addEventListener("click", restart);
+  document.getElementById("strict").addEventListener("click", simonStrictFn);
+  gameBtns.addEventListener("mousedown", tileClick);
+  gameBtns.addEventListener("mouseup", pauseFn);
   simonOnOff = true;
   restart(false);
   addToSequence();
@@ -97,12 +123,16 @@ function shutOff() {
   simonOnOff = false;
   display.innerHTML = "";
   restart(false);
-  //Remove "light on" class, so the device stops blinking when off
+  // Remove "light on" class, so the device stops blinking when off
   // for (let i = 0; i < buttons.length; i++) {
   //   document.getElementById(buttons[i]).classList.remove(buttons[i] + "On");
   // }
-  gameBtns.disabled = true;
-  gameBtns.removeEventListener("click", tileClick);
+
+  for (let i = 0; i < buttons.length; i++) {
+    playAudio(buttons[i], true);
+  }
+  gameBtns.removeEventListener("mousedown", tileClick);
+  gameBtns.removeEventListener("mouseup", pauseFn);
 }
 
 function restart(shut) {
@@ -117,7 +147,6 @@ function restart(shut) {
   }
 }
 
-document.getElementById("strict").addEventListener("click", simonStrictFn);
 function simonStrictFn() {
   if (simonOnOff) {
     if (simonStrict) {
@@ -143,22 +172,24 @@ function onOff() {
   }
 }
 
-document.getElementById("restart").addEventListener("click", restart);
-
 //Lights up buttons based on sequence array
 function playSequence() {
   for (let i = 0; i < sequence.length; i++) {
     setTimeout(function() {
-      lightButton(sequence[i]);
+      if (simonOnOff) {
+        playAudio(sequence[i]);
+        lightButton(sequence[i]);
+      }
     }, 1500 * i);
   }
-  setTimeout(function() {}, 2000 * sequence.length);
 }
 
 //Lights up the chosen button
 function lightButton(id) {
-  document.getElementById(id).classList.toggle(id + "On");
-  setTimeout(function() {
+  if (simonOnOff) {
     document.getElementById(id).classList.toggle(id + "On");
-  }, 1000);
+    setTimeout(function() {
+      document.getElementById(id).classList.toggle(id + "On");
+    }, 1000);
+  }
 }
