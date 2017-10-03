@@ -40,6 +40,7 @@ body {
 }
 
 .gameBtns div button {
+  outline: none;
   height: 300px;
   width: 300px;
   border: 5px solid #414142;
@@ -155,6 +156,7 @@ body {
 }
 
 .cntrl-pnl button {
+  outline: none;
   margin: auto;
   vertical-align: top;
   border-radius: 100%;
